@@ -40,7 +40,7 @@ class Product implements Taxable{
 
 class Demo{
     public static void main(String[] args){
-	       Employee e=new Employee(1,"mehul",20000);
+	       Employee e=new Employee(1,"Manoj",50000);
 		   e.calcTax();
 		   Product p=new Product(1,25000,2);
 		   p.calcTax();
