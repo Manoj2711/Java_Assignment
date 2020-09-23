@@ -1,57 +1,48 @@
-import java.util.*;
-interface taxable{
-	 double salesTax=0.07;
-	 double incomeTax=0.10;
-	 
-	 void calTax();
-	
+interface Taxable{
+  public final static double salesTax=0.07;
+  public final static double incomeTax=0.105;
+  void calcTax();
+  
 }
 
-class Employee implements taxable{
-	int empid;
-	int salary;
-	String name;
-	
-	Employee(){}
-	
-	Employee(int empid,int salary,String name){
-		this.empid=empid;
-		this.salary=salary;
-		this.name=name;
-	}
-	
-	public void calTax(){
-		double incomeTax1=salary*incomeTax;
-		System.out.println("Total IncomeTax= "+incomeTax1);
-	}
+class Employee implements Taxable{
+      int empId;
+	  String name;
+	  double salary;
+      Employee(int empId,String name,double salary){
+	       this.empId=empId;
+		   this.name=name;
+		   this.salary=salary;
+	  }
+	  
+	  public void calcTax(){
+	      double tax=salary*incomeTax;
+		  System.out.println("tax="+tax);
+	  }
 }
 
-class Product implements taxable{
-	int pid;
-	int price;
+class Product implements Taxable{
+    int pid;
+	double price;
 	int quantity;
-	
-	Product(){}
-	
-	Product(int pid,int price,int quantity){
-		this.pid=pid;
+    Product(int pid,double price,int quantity){
+	    this.pid=pid;
 		this.price=price;
 		this.quantity=quantity;
 	}
 	
-	public void calTax(){
-		double salesTax1=(price*quantity) * salesTax;
-		System.out.println("Total IncomeTax= "+salesTax1);
-	}
+	public void calcTax(){
+	      double tax=price*quantity*salesTax;
+		  System.out.println("tax="+salesTax);
+		  System.out.println("tax="+tax);
+	  }
 }
 
-
 class Demo{
-	public static void main(String args[]){
-		taxable t=new Employee(1,15000,"jack");
-		taxable t1=new Product(1,400,5);
-		t.calTax();
-		t1.calTax();
+    public static void main(String[] args){
+	       Employee e=new Employee(1,"mehul",20000);
+		   e.calcTax();
+		   Product p=new Product(1,25000,2);
+		   p.calcTax();
 	}
-
 }
